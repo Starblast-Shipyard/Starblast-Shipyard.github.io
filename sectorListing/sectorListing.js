@@ -161,7 +161,7 @@ function refreshZones(){
 
                 <a class='system ${systemClass}' href='${link}' title='${link}'>`;
               if (sys.mode != "modding") zoneString+=`<i class="material-icons ${sys.mode}Icon modeIcon">${icons[sys.mode]}</i>`;
-              else zoneString+=`<img class="mod-icons" src="https://starblast.data.neuronality.com/modding/img/${sys.mod_id}.jpg">`;
+              else zoneString+=`<img src="https://starblast.data.neuronality.com/modding/img/${sys.mod_id}.jpg">`;
               zoneString+=`<span class='systemName'>${sys.name}</span>
                   <span class='minutes ${newServer}'>${minutes}:${secondsString}</span>
                   <div class="tooltip">
