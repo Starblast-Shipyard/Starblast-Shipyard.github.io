@@ -25,7 +25,8 @@ var icons={
   "survival":"accessibility",
   "team":"people",
   "deathmatch":"whatshot",
-  "invasion":"blur_off"
+  "invasion":"blur_off",
+  "modding":"construction"
 }
 
 function refreshZones(){
@@ -51,7 +52,7 @@ function refreshZones(){
               var open = system.open
                 // team or survival mode
               var mode = system.mode
-
+              var mod_id = system.mod_id
               var criminality = system.criminal_activity;
 
               var criminalState;
@@ -64,11 +65,11 @@ function refreshZones(){
               }
 
               try{
-              Zones[location].push({"name":systemName,"time":time,"players":players,"id":id,"open":open,"mode":mode,"criminality":criminality,"criminalState":criminalState});
+              Zones[location].push({"name":systemName,"time":time,"players":players,"id":id,"open":open,"mode":mode,"mod_id":mod_id,"criminality":criminality,"criminalState":criminalState});
               }
               catch(e){
                   Zones[location]=[];
-                  Zones[location].push({"name":systemName,"time":time,"players":players,"id":id,"open":open,"mode":mode,"criminality":criminality,"criminalState":criminalState});
+                  Zones[location].push({"name":systemName,"time":time,"players":players,"id":id,"open":open,"mode":mode,"mod_id":mod_id,"criminality":criminality,"criminalState":criminalState});
               }
           });
 
@@ -118,7 +119,9 @@ function refreshZones(){
               if(mode=="invasion" && !$("#enableInvasion").is(':checked')){
                 return;
               }
-
+              if(mode=="modding" && !$("#enableModding").is(':checked')){
+                return;
+              }
 
               var newServer = "";
               minutes = Math.floor(sys.time / 60);
@@ -159,9 +162,10 @@ function refreshZones(){
               secondsString = ('00' + seconds).slice(-2);
               zoneString+=`
 
-                <a class='system ${systemClass}' href='${link}' title='${link}'>
-                  <i class="material-icons ${sys.mode}Icon modeIcon">${icons[sys.mode]}</i>
-                  <span class='systemName'>${sys.name}</span>
+                <a class='system ${systemClass}' href='${link}' title='${link}'>`;
+              if (sys.mode == "modding" && sys.mod_id) zoneString+=`<img src="https://starblast.data.neuronality.com/modding/img/${sys.mod_id}.jpg">`;
+              else zoneString+=`<i class="material-icons ${sys.mode}Icon modeIcon">${icons[sys.mode]}</i>`;
+              zoneString+=`<span class='systemName'>${sys.name}</span>
                   <span class='minutes ${newServer}'>${minutes}:${secondsString}</span>
                   <div class="tooltip">
                     <i class="material-icons">face</i>
