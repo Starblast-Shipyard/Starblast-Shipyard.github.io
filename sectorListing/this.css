@@ -331,3 +331,9 @@ color:#AAA;
   text-align: center;
   color:rgba(255,255,255,.5);
 }
+
+img {
+  width: 24px;
+  height: 24px;
+  margin-right: .4em;
+}
