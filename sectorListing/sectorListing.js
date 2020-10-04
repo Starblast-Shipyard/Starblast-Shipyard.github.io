@@ -51,7 +51,7 @@ function refreshZones(){
               var open = system.open
                 // team or survival mode
               var mode = system.mode
-
+              var mod_id = system.mod_id
               var criminality = system.criminal_activity;
 
               var criminalState;
@@ -64,11 +64,11 @@ function refreshZones(){
               }
 
               try{
-              Zones[location].push({"name":systemName,"time":time,"players":players,"id":id,"open":open,"mode":mode,"criminality":criminality,"criminalState":criminalState});
+              Zones[location].push({"name":systemName,"time":time,"players":players,"id":id,"open":open,"mode":mode,"mod_id":mod_id,criminality":criminality,"criminalState":criminalState});
               }
               catch(e){
                   Zones[location]=[];
-                  Zones[location].push({"name":systemName,"time":time,"players":players,"id":id,"open":open,"mode":mode,"criminality":criminality,"criminalState":criminalState});
+                  Zones[location].push({"name":systemName,"time":time,"players":players,"id":id,"open":open,"mode":mode,"mod_id":mod_id,criminality":criminality,"criminalState":criminalState});
               }
           });
 
