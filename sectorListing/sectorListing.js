@@ -25,7 +25,8 @@ var icons={
   "survival":"accessibility",
   "team":"people",
   "deathmatch":"whatshot",
-  "invasion":"blur_off"
+  "invasion":"blur_off",
+  "modding":"construction"
 }
 
 function refreshZones(){
@@ -64,11 +65,11 @@ function refreshZones(){
               }
 
               try{
-              Zones[location].push({"name":systemName,"time":time,"players":players,"id":id,"open":open,"mode":mode,"mod_id":mod_id,criminality":criminality,"criminalState":criminalState});
+              Zones[location].push({"name":systemName,"time":time,"players":players,"id":id,"open":open,"mode":mode,"mod_id":mod_id,"criminality":criminality,"criminalState":criminalState});
               }
               catch(e){
                   Zones[location]=[];
-                  Zones[location].push({"name":systemName,"time":time,"players":players,"id":id,"open":open,"mode":mode,"mod_id":mod_id,criminality":criminality,"criminalState":criminalState});
+                  Zones[location].push({"name":systemName,"time":time,"players":players,"id":id,"open":open,"mode":mode,"mod_id":mod_id,"criminality":criminality,"criminalState":criminalState});
               }
           });
 
@@ -162,8 +163,8 @@ function refreshZones(){
               zoneString+=`
 
                 <a class='system ${systemClass}' href='${link}' title='${link}'>`;
-              if (sys.mode != "modding") zoneString+=`<i class="material-icons ${sys.mode}Icon modeIcon">${icons[sys.mode]}</i>`;
-              else zoneString+=`<img src="https://starblast.data.neuronality.com/modding/img/${sys.mod_id}.jpg">`;
+              if (sys.mode == "modding" && sys.mod_id) zoneString+=`<img src="https://starblast.data.neuronality.com/modding/img/${sys.mod_id}.jpg">`;
+              else zoneString+=`<i class="material-icons ${sys.mode}Icon modeIcon">${icons[sys.mode]}</i>`;
               zoneString+=`<span class='systemName'>${sys.name}</span>
                   <span class='minutes ${newServer}'>${minutes}:${secondsString}</span>
                   <div class="tooltip">
