@@ -118,7 +118,9 @@ function refreshZones(){
               if(mode=="invasion" && !$("#enableInvasion").is(':checked')){
                 return;
               }
-
+              if(mode=="modding" && !$("#enableModding").is(':checked')){
+                return;
+              }
 
               var newServer = "";
               minutes = Math.floor(sys.time / 60);
